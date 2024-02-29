@@ -61,6 +61,9 @@ const Index = () => {
   return (
     <Container maxW="container.md" centerContent>
       <VStack spacing={8} mt={10}>
+        <Button colorScheme="red" onClick={() => setFlashcards([...flashcards, { question: "Marwan", answer: "a cat" }])}>
+          Add Cat Flashcard
+        </Button>
         <Heading>Create Flashcards from PDF</Heading>
         <Input placeholder="Enter question" value={question} onChange={(e) => setQuestion(e.target.value)} />
         <Textarea placeholder="Enter answer" value={answer} onChange={(e) => setAnswer(e.target.value)} />
