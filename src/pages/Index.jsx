@@ -57,9 +57,20 @@ const Index = () => {
         <Heading>Create Flashcards from PDF</Heading>
         <Input placeholder="Enter question" value={question} onChange={(e) => setQuestion(e.target.value)} />
         <Textarea placeholder="Enter answer" value={answer} onChange={(e) => setAnswer(e.target.value)} />
-        <Button leftIcon={<FaSave />} colorScheme="blue" onClick={addFlashcard}>
-          Save Flashcard
-        </Button>
+        <SimpleGrid columns={2} spacing={4} width="full">
+          <Button leftIcon={<FaSave />} colorScheme="blue" onClick={addFlashcard}>
+            Save Flashcard
+          </Button>
+          <Button
+            leftIcon={<FaSave />}
+            colorScheme="teal"
+            onClick={() => {
+              setFlashcards([...flashcards, { question: "AI-generated Question?", answer: "AI-generated Answer." }]);
+            }}
+          >
+            AI Generate Flashcard
+          </Button>
+        </SimpleGrid>
         <SimpleGrid columns={2} spacing={10} width="full">
           <Button leftIcon={<FaArrowLeft />} onClick={goToPreviousCard} isDisabled={flashcards.length === 0}>
             Previous
