@@ -65,7 +65,10 @@ const Index = () => {
             leftIcon={<FaSave />}
             colorScheme="teal"
             onClick={() => {
-              setFlashcards([...flashcards, { question: "AI-generated Question?", answer: "AI-generated Answer." }]);
+              const flashcardType = prompt("What kind of flashcard would you like?");
+              if (flashcardType) {
+                setFlashcards([...flashcards, { question: `AI-generated Question for ${flashcardType}?`, answer: `AI-generated Answer for ${flashcardType}.` }]);
+              }
             }}
           >
             AI Generate Flashcard
