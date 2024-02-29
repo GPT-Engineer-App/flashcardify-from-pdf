@@ -2,6 +2,13 @@ import React, { useState } from "react";
 import { Box, Button, Container, VStack, Heading, Input, Textarea, SimpleGrid, Text, useToast } from "@chakra-ui/react";
 import { FaSave, FaArrowRight, FaArrowLeft } from "react-icons/fa";
 
+const generateGPTPrompt = (type) => {
+  // Simulate a GPT-like response for demonstration purposes
+  const question = `What is a ${type}?`;
+  const answer = `A ${type} is a concept or item related to the field of ${type}.`;
+  return { question, answer };
+};
+
 // Flashcard component
 const Flashcard = ({ question, answer, showAnswer }) => (
   <Box p={5} shadow="md" borderWidth="1px" flex="1" borderRadius="md">
@@ -67,7 +74,8 @@ const Index = () => {
             onClick={() => {
               const flashcardType = prompt("What kind of flashcard would you like?");
               if (flashcardType) {
-                setFlashcards([...flashcards, { question: `AI-generated Question for ${flashcardType}?`, answer: `AI-generated Answer for ${flashcardType}.` }]);
+                const { question, answer } = generateGPTPrompt(flashcardType);
+                setFlashcards([...flashcards, { question, answer }]);
               }
             }}
           >
